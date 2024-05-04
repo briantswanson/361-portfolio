@@ -5,7 +5,7 @@
 # Assignment: Portfolio Project
 
 """
-This program queries ChatGPT to generate a recipe for the user based on their ingredients.
+This program queries ChatGPT to generate a random recipe for the user.
 """
 
 import os
@@ -15,12 +15,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-print("generate_recipe is now online")
-
-
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:1111")
+socket.bind("tcp://*:2222")
+
+print("generate_recipe_random is now online")
 
 while True:
     message = socket.recv()
@@ -32,7 +31,7 @@ while True:
       model="gpt-3.5-turbo",
       messages=[
         {"role": "system", "content": "You are providing a simple recipe"},
-        {"role": "user", "content": f"provide a recipe that uses {message} which includes a title and ingredient list"}
+        {"role": "user", "content": f"provide a random recipe that includes a title and ingredient list"}
       ]
     )
 
