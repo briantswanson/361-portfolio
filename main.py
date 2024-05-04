@@ -12,7 +12,7 @@ def mainMenu():
     """
     print(f"Main Menu\n"
           f"Please select an option:\n\n"
-          f"1. Get a suggested recipe with your ingredients (New!)\n"
+          f"1. Enter your ingredients and let us suggest you a recipe (New!)\n"
           f"2. Receive a random recipe (New!)\n"
           f"3. List the recipe log (Under Construction)\n"
           f"4. Print a specific recipe from the recipe log (Under Construction)\n"
@@ -46,8 +46,8 @@ def generate_recipe_with_ingredients():
     A function that prompts the user for a list of ingredients to append onto a ChatGPT query.
     :return: A string that is fed into generate_recipe_random to give the user a random recipe.
     """
-    print('You selected: "Get a suggested recipe with your ingredients." Please enter your ingredients one by one'
-          'separated by commas and we will suggest you a recipe.\n'
+    print('You selected: "Enter your ingredients and let us suggest you a recipe.\n'
+          'Please enter your ingredients one by one separated by commas and we will suggest you a recipe.\n'
           '(Please note that misspelled words or ingredients you do not have may yield unsatisfactory results.\n'
           'Example: onion, bell pepper, steak')
     service_command = input("Enter your ingredients here: ")

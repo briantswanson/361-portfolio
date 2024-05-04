@@ -31,7 +31,7 @@ while True:
       model="gpt-3.5-turbo",
       messages=[
         {"role": "system", "content": "You are providing a simple recipe"},
-        {"role": "user", "content": f"provide a random recipe that includes a title and ingredient list"}
+        {"role": "user", "content": f"provide a random recipe"}
       ]
     )
 
