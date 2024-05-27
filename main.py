@@ -5,6 +5,7 @@
 # Assignment: Portfolio Project
 
 import zmq
+import json
 
 def mainMenu():
     """
@@ -12,9 +13,9 @@ def mainMenu():
     """
     print(f"Main Menu\n"
           f"Please select an option:\n\n"
-          f"1. Enter your ingredients and let us suggest you a recipe (New!)\n"
-          f"2. Receive a random recipe (New!)\n"
-          f"3. List the recipe log (Under Construction)\n"
+          f"1. Enter your ingredients and let us suggest you a recipe\n"
+          f"2. Receive a random recipe\n"
+          f"3. List the recipe log (New!)\n"
           f"4. Print a specific recipe from the recipe log (Under Construction)\n"
           f"5. Receive a grocery list based on a recipe you choose (Under Construction)\n"
           f"6. Exit the program\n")
@@ -36,7 +37,12 @@ def communicator(service_socket, service_command = None):
     else:
         socket.send_string(service_command)
 
-    message = socket.recv()
+    if service_socket == 3333:
+        message_json = socket.recv_json()
+        message = json.loads(message_json)
+
+    else:
+        message = socket.recv()
 
     return message
 
@@ -120,8 +126,12 @@ while user_input != 6:
 
     elif user_input == 3:
         # Call a service to print the titles of recipes already generated
-        print('You selected: "List the recipe log."')
+        print(f'\nYou selected: "List the recipe log."\n'
+              f'Each of the recipes listed below are saved in the main directory Recipes folder as .txt files.')
         service_socket = 3333
+        response = communicator(service_socket)
+        for recipe in response:
+            print(f"{recipe[:-4]}")
         pass
 
     elif user_input == 4:
