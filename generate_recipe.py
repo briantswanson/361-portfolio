@@ -31,8 +31,8 @@ while True:
     completion = client.chat.completions.create(
       model="gpt-3.5-turbo",
       messages=[
-        {"role": "system", "content": "You are providing a simple recipe"},
-        {"role": "user", "content": f"provide a recipe that uses {message} which includes a title and ingredient list"}
+        {"role": "system", "content": "You are providing a simple recipe with no greeting"},
+        {"role": "user", "content": f"provide a recipe that uses {message} which includes a title, ingredient list and procedure with no formatting characters. Do not have any text before the title of the recipe"}
       ]
     )
 
