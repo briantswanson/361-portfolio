@@ -1,7 +1,5 @@
 
 import zmq
-import re
-
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
@@ -11,6 +9,7 @@ socket.bind("tcp://*:6666")
 while True:
 
     byte_str = socket.recv()
+    print(f"received {byte_str}")
 
     string_decoded = byte_str.decode("utf-8")
     title_line = string_decoded.split(('\n', 1)[0])
